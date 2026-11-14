@@ -1,0 +1,104 @@
+  :root { --ink:#000; --grey:#767676; --line:#e6e6e6; --bg:#fff; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body { height:100%; background:var(--bg); color:var(--ink); }
+  body {
+    font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size:18px; line-height:1.4;
+    -webkit-text-size-adjust:100%; -webkit-user-select:none; user-select:none;
+    overscroll-behavior:none;
+  }
+  #app {
+    height:100%; max-width:520px; margin:0 auto;
+    display:flex; flex-direction:column;
+    padding: calc(env(safe-area-inset-top) + 14px) 20px calc(env(safe-area-inset-bottom) + 16px);
+  }
+  /* top bar */
+  .top { display:flex; justify-content:space-between; align-items:center; min-height:40px; }
+  .top .left, .top .right { color:var(--grey); font-size:16px; background:none; border:none; padding:8px 0; min-height:40px; font-family:inherit; }
+  .top .right { text-align:right; }
+  .progress { height:3px; background:var(--line); border-radius:2px; margin:6px 0 0; overflow:hidden; }
+  .progress i { display:block; height:100%; background:var(--ink); }
+  /* card */
+  .card {
+    flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;
+    border:1.5px solid var(--ink); border-radius:24px; margin:16px 0; padding:24px 18px;
+    text-align:center; min-height:0; position:relative; overflow-y:auto; justify-content:flex-start;
+  }
+  .card.tap { cursor:pointer; }
+  .card > :nth-child(1 of :not(.hint)) { margin-top:auto; }
+  .card > :nth-last-child(1 of :not(.hint)) { margin-bottom:auto; }
+  .plain { flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
+  .fa { font-family:"Vazirmatn", system-ui, sans-serif; direction:rtl; unicode-bidi:isolate; font-weight:400; }
+  .letter { font-size:136px; line-height:1.15; }
+  .letter.intro { font-size:72px; line-height:1.05; }
+  .form { cursor:pointer; border-radius:10px; }
+  .form:active { background:#f2f2f2; }
+  .exs { width:100%; margin-top:10px; }
+  .notebox { width:100%; margin-top:12px; background:#f3f3f3; border:none; border-radius:12px;
+             padding:9px 12px; color:#555; font-size:15px; line-height:1.4; }
+  .notebox div + div { margin-top:6px; }
+  .reveal-in { animation: fadeUp .64s ease-out both; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+  .ex { display:grid; grid-template-columns:52px 1fr auto; align-items:center; gap:8px; padding:1px 0; text-align:left; }
+  .ex .pos { color:var(--grey); font-size:12px; }
+  .ex .t { color:var(--grey); font-size:15px; }
+  .ex .fa { font-size:26px; line-height:1.35; }
+  /* writing sheet */
+  .sheet { position:fixed; inset:0; background:#fff; z-index:10; display:flex; flex-direction:column;
+           padding: calc(env(safe-area-inset-top) + 14px) 20px calc(env(safe-area-inset-bottom) + 16px); max-width:520px; margin:0 auto; }
+  .sheet .card { justify-content:flex-start; padding-top:18px; }
+  .sheet .glyph { font-size:44px; line-height:1.4; }
+  .sheet svg { width:100%; height:auto; margin-top:22px; }
+  .wnav { display:flex; align-items:center; justify-content:space-between; width:100%; margin-top:14px; }
+  .wnav .nav { font:inherit; font-size:34px; line-height:1; width:56px; height:48px; border:1.5px solid var(--ink); border-radius:14px; background:#fff; color:var(--ink); }
+  .wnav .nav:disabled { border-color:#ddd; color:#ccc; }
+  .wnav .dots { display:flex; gap:10px; font-size:12px; color:#aaa; }
+  .wnav .dots .on { color:var(--ink); font-weight:600; }
+  .sheet .steps { color:var(--grey); font-size:14px; margin-top:6px; line-height:1.5; }
+  .word { font-size:64px; line-height:1.45; }
+  .sound { font-size:30px; margin-top:4px; }
+  .card .intro + .sound { font-size:26px; }
+  .meta { color:var(--grey); font-size:18px; margin-top:4px; }
+  .note { color:var(--grey); font-size:15px; margin-top:10px; max-width:300px; }
+  .forms { display:grid; grid-template-columns:repeat(4,1fr); width:100%; margin-top:12px; direction:rtl; border-top:1px solid var(--line); padding-top:8px; }
+  .forms .fa { font-size:34px; line-height:1.5; }
+  .forms small { display:block; color:var(--grey); font-size:12px; direction:ltr; }
+  .example { margin-top:14px; font-size:16px; color:var(--grey); }
+  .example .fa { font-size:30px; color:var(--ink); }
+  .hint { position:absolute; bottom:18px; left:0; right:0; color:var(--grey); font-size:15px; }
+  .h1 { font-size:30px; font-weight:600; }
+  .big-num { font-size:72px; font-weight:300; line-height:1; }
+  /* buttons */
+  .btns { display:flex; flex-direction:column; gap:10px; }
+  .row { display:flex; gap:8px; }
+  button.b {
+    font:inherit; font-size:18px; font-weight:600; min-height:58px; border-radius:16px;
+    border:1.5px solid var(--ink); background:#fff; color:var(--ink); flex:1;
+    -webkit-tap-highlight-color:transparent; cursor:pointer; padding:0 8px;
+  }
+  button.b.dark { background:var(--ink); color:#fff; }
+  button.b.small { font-size:16px; min-height:56px; }
+  button.b.ok   { background:#d8f3dc; }
+  button.b.warn { background:#fff3bf; }
+  button.b.bad  { background:#ffd6d6; }
+  button.b.show { background:#d8f3dc; border-width:3px; }
+  button.b.off  { background:#efefef; color:#aaa; border-color:#d6d6d6; }
+  button.b:disabled { opacity:1; }
+  /* baseline guide */
+  .ln { position:relative; display:inline-block; padding:0 14px; }
+  .ln .fa { position:relative; z-index:1; }
+  .ln .bm { display:inline-block; width:0; height:0; vertical-align:baseline; }
+  .ln .bl { position:absolute; left:0; right:0; height:1.5px; background:#c8c8c8; z-index:0; }
+  .forms .ln { padding:0 4px; width:100%; }
+  .choices { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .choices button.b { font-size:26px; font-weight:500; min-height:64px; }
+  .rate small { display:block; font-size:11px; font-weight:400; color:var(--grey); margin-top:-2px; }
+  .rate .b { flex-direction:column; }
+  /* settings */
+  .set { width:100%; text-align:left; }
+  .set h3 { font-size:15px; color:var(--grey); font-weight:400; margin:22px 0 8px; }
+  .set .row .b { font-size:17px; }
+  .set .b.on { background:var(--ink); color:#fff; }
+  .set .preview { margin-top:10px; color:var(--grey); font-size:16px; }
+  .set .preview .fa { font-size:26px; color:var(--ink); }
+  .home-sub { color:var(--grey); font-size:17px; margin-top:8px; }
